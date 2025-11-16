@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lustige Schul-Website</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #c41616;
+    transition: background-color 0.5s;
+  }
+  h1 { color: #333; }
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #191e19;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover { background-color: #272a27; }
+  #joke {
+    margin: 20px auto;
+    font-size: 18px;
+    width: 80%;
+    min-height: 40px;
+  }
+  #emoji {
+    font-size: 50px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+</style>
+</head>
+
+<style type="text/css">
+
+    .box
+    {
+        width: 40%;
+        background-color: red;
+        padding: 100px;
+        margin: 100px;
+        border: 50px black;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<body>
+
+<h1> 👺 Weclome to xSweaty Website!</h1>
+<p id="joke">Drücke den Knopf für einen trash joke!</p>
+
+<button onclick="showJoke()">Neuer Witz</button>
+<button onclick="changeColor()">Farbe ändern</button>
+<button onclick="confetti()">Bling!</button>
+
+<div id="emoji" onclick="dance()">🎬</div>
+
+<div class="box"></div>
+<p>
+    
+   Margin und Padding feld zum ausprobieren.
+
+</p>
+
+<script>
+const jokes = [
+  "Warum können Geister so schlecht lügen? – Weil man durch sie hindurchsieht!",
+  "Was macht ein Keks unter einem Baum? – Krümel!",
+  "Ich habe heute nichts geschafft – das war anstrengend!",
+  "Warum ging der Pilz auf die Party? – Weil er ein Champignon war!"
+];
+
+function showJoke() {
+  const j = jokes[Math.floor(Math.random() * jokes.length)];
+  document.getElementById("joke").textContent = j;
+}
+
+function changeColor() {
+  const colors = ["#FF0000","#baffc9","#bae1ff","#ffffba","#ffdfba"];
+  document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+}
+
+function dance() {
+  const e = document.getElementById("emoji");
+  e.style.transform = "rotate(20deg) scale(1.2)";
+  setTimeout(() => e.style.transform = "rotate(0) scale(1)", 300);
+  
+  // Secret Feature: 5 Klicks in kurzer Zeit öffnen YouTube
+  secretClick();
+}
+
+function confetti() {
+  for (let i = 0; i < 40; i++) {
+    const piece = document.createElement("div");
+    piece.textContent = "🎉";
+    piece.style.position = "fixed";
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.top = "-20px";
+    piece.style.fontSize = "24px";
+    piece.style.animation = "fall 5s linear";
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 2000);
+  }
+}
+
+/* ---- SECRET FEATURE ---- */
+let clickCount = 0;
+let clickTimer;
+function secretClick() {
+  clickCount++;
+  clearTimeout(clickTimer);
+  clickTimer = setTimeout(() => clickCount = 0, 1000); // zurücksetzen nach 1s
+  if (clickCount >= 5) {
+    window.open("https://www.youtube.com/@x_Sweat_x", "_blank");
+    clickCount = 0;
+  }
+}
+</script>
+
+<style>
+@keyframes fall {
+  to { transform
